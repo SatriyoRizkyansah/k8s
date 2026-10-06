@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  type: NodePort # Membuka akses port ke luar
+  selector:
+    app: nginx-app # Konek ke Deployment Nginx yang kamu buat di Poin 2 tadi
+  ports:
+    - port: 80 # Port internal service
+      targetPort: 80 # Port container Nginx
+      nodePort: 30080 # Port yang dibuka di laptop (bebas antara 30000-32767)

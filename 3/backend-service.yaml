@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service # Nama DNS internal K8s
+spec:
+  type: ClusterIP # Hanya bisa diakses di dalam cluster
+  selector:
+    app: backend-app # Mengarah ke Pod dengan label "app: backend-app"
+  ports:
+    - port: 3000 # Port Service
+      targetPort: 3000 # Port Container di dalam Pod

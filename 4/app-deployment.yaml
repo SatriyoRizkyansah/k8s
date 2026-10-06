@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend-container
+          image: nginx:alpine
+          ports:
+            - containerPort: 3000
+
+          # INI CARA MENYUNTIKKAN CONFIGMAP & SECRET KE DALAM CONTAINER
+          envFrom:
+            - configMapRef:
+                name: app-config # Semua data dari app-config jadi env var
+            - secretRef:
+                name: app-secret # Semua data dari app-secret jadi env var

@@ -21,9 +21,9 @@ c. cek kesehatan kompnen minikube - minikube status
    [x] Kuasai cara debugging log: kubectl logs dan kubectl describe
 
 3. Networking (Menghubungkan Aplikasi)
-   [ ] Paham beda ClusterIP, NodePort, dan LoadBalancer
-   [ ] Bisa buat Service agar aplikasi internal bisa saling komunikasi
-   [ ] Bisa buka akses aplikasi K8s agar bisa dibuka di browser laptop
+   [x] Paham beda ClusterIP, NodePort, dan LoadBalancer
+   [x] Bisa buat Service agar aplikasi internal bisa saling komunikasi
+   [x] Bisa buka akses aplikasi K8s agar bisa dibuka di browser laptop
 
 4. Konfigurasi (ConfigMap & Secret)
    [ ] Bisa buat ConfigMap untuk simpan Environment Variables (.env)
