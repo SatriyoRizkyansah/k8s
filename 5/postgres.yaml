@@ -1,0 +1,58 @@
+# 1. PVC: Meminta Storage 1GB untuk Database
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce # Hanya bisa di-mount oleh 1 Node dalam satu waktu
+  resources:
+    requests:
+      storage: 1Gi
+---
+# 2. Deployment: Jalankan Postgres & Pasang PVC
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+spec:
+  replicas: 1 # Database idealnya 1 replika jika belum pakai cluster HA
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:15-alpine
+          env:
+            - name: POSTGRES_PASSWORD
+              value: "rahasia123"
+          ports:
+            - containerPort: 5432
+
+          # MENAMBUNGKAN STORAGE KE DALAM CONTAINER
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data # Folder data bawaan Postgres
+
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: postgres-pvc # Panggil PVC yang dibuat di atas
+---
+# 3. Service: Agar Backend bisa konek ke Postgres via "http://postgres-service:5432"
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+spec:
+  type: ClusterIP
+  selector:
+    app: postgres
+  ports:
+    - port: 5432
+      targetPort: 5432

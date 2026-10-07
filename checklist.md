@@ -26,18 +26,18 @@ c. cek kesehatan kompnen minikube - minikube status
    [x] Bisa buka akses aplikasi K8s agar bisa dibuka di browser laptop
 
 4. Konfigurasi (ConfigMap & Secret)
-   [ ] Bisa buat ConfigMap untuk simpan Environment Variables (.env)
-   [ ] Bisa buat Secret untuk simpan data sensitif/password
-   [ ] Bisa menyambungkan ConfigMap & Secret ke dalam Deployment YAML
+   [x] Bisa buat ConfigMap untuk simpan Environment Variables (.env)
+   [x] Bisa buat Secret untuk simpan data sensitif/password
+   [x] Bisa menyambungkan ConfigMap & Secret ke dalam Deployment YAML
 
 5. Storage (Menyimpan Data Database)
-   [ ] Paham konsep PersistentVolume (PV) dan PersistentVolumeClaim (PVC)
-   [ ] Bisa deploy database di K8s agar datanya tidak hilang saat Pod mati
+   [x] Paham konsep PersistentVolume (PV) dan PersistentVolumeClaim (PVC)
+   [x] Bisa deploy database di K8s agar datanya tidak hilang saat Pod mati
 
 6. Package Manager (Helm)
-   [ ] Install Helm di lokal
-   [ ] Paham cara kerja Helm Chart
-   [ ] Bisa deploy aplikasi pakai Helm dan edit file values.yaml
+   [x] Install Helm di lokal
+   [x] Paham cara kerja Helm Chart
+   [x] Bisa deploy aplikasi pakai Helm dan edit file values.yaml
 
 7. Custom Image & Registry
    [ ] Bisa build Docker Image buatan sendiri
